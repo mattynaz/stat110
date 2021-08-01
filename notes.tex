@@ -740,13 +740,30 @@ If $X$ and $Y$ are continuous, the definition of independence between $X$ and $Y
 \section{Conditional Expectation}
 
 \subsection{Given an Event}
+Consider the following example. If the average American lives to be 80 years old and Fred is 30, then does Fred on average have 50 years left to live? No. The average lifespan is 80 years old, but this is average includes the deaths of people younger than 30 years of age. Given that Fred is already 30, he has on average more than 50 years to live! To put this mathematically, letting $T$ be Fred's livespan, $$\E[T] < \E[T \mid T \geq 30].$$
+\begin{definition}[conditional expectation (on an event)]
+  Let $A$ be an event with a positive probability. Then 
+  \begin{align*}
+    \E[Y \mid A] &= \sum_y yP(y \mid A) \quad\t{if $Y$ is a discrete r.v., or} \\
+    \E[Y \mid A] &= \int_{-\infty}^{\infty} yf_{Y \mid A}(y \mid A) \quad\t{if $Y$ is a continuous r.v.}.
+  \end{align*}
+\end{definition}
+By the fundamental bridge, since probabilities are expectations, LOTP is a special case of the law of total expectation (which itself is a special case of Adam's Law).
+\begin{definition}[law of total expectation]
+  If $A_1, \ldots, A_n$ is a partition of the sample space, then $$\E[Y] = \sum_{i=1}^n \E[Y \mid A_i]P(A_i).$$
+\end{definition}
 \subsection{Given an R.V.}
-\subsection{Conditional Variance}
-
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% INEQUALITIES AND LIMIT THEOREMS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newpage
-\section{Inequalities and Limit Theorems}
+Since $X = x$ is an event, intuitively 
+\begin{align*}
+  \E[Y \mid X = x] &= \sum_y yP(Y = y \mid X = x) \quad\t{if $Y$ is a discrete r.v., or } \\
+  \E[Y \mid X = x] &= \int_{-\infty}^{\infty} yf_{Y \mid X}(y \mid X = x) \quad\t{if $Y$ is a continuous r.v.}.
+\end{align*}
+Notice that if $X$ is unknown, then $\E[Y \mid X]$ is a random variable.
+\begin{definition}[conditional expectation (given an r.v.)]
+  The conditional expectation of $Y$ given $X$, denoted by $\E[Y \mid X]$, is a random variable $g(x) = \E[Y \mid X = x]$.
+\end{definition}
+\begin{theorem}[Adam's Law]
+  For any r.v.s $X$ and $Y$, $$\E[\E[Y \mid X]] = \E[Y].$$
+\end{theorem}
 
 \end{document}
